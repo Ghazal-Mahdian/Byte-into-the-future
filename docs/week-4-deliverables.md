@@ -20,6 +20,8 @@ The Public Service Risk Dashboard is a multi-agent AI system intended to help go
 | Response Agent            | Proposes or executes only explicitly authorized actions in the POC sandbox.         | Is action permitted and safe?        |
 | Verification & Handoff    | Runs independent checks, records outcomes, prepares analyst handoff.                | Resolved, retry safely, or escalate? |
 
+Policy and human-approval gates apply across all five modules. The dashboard and case store support the workflow. Verification & Handoff independently checks the Response Agent's results.
+
 ## Component architecture and data flow
 
 ↓ INPUT / PERCEPTION: Synthetic alerts, configuration snapshots, asset inventory, service-dependency map
@@ -77,6 +79,7 @@ Observe → Plan → Act → Verify → Record validated outcome → Retrieve re
 | IBM Bob                              | Required IBM development workflow for the project.            | Development tool; confirm team access.      |
 | IBM watsonx.ai / Granite (candidate) | Language reasoning, summarization, planning support.          | Model/API; outputs subject to checks.       |
 | IBM watsonx Orchestrate (optional)   | Potential workflow orchestration.                             | Use only if available and useful.           |
+| IBM Cloud (candidate) | Potential hosting and IBM service access. | Availability and adoption to be confirmed. |
 | Python                               | Baseline comparisons, simulated actions, validation, scoring. | Local sandbox functions with permissions.   |
 | Synthetic JSON / CSV                 | Alerts, configurations, assets, service dependencies.         | Local data ingestion; no real citizen data. |
 | SQLite                               | Case status, event logs, audit trail, validated resolutions.  | Parameterized SQL and controlled writes.    |
@@ -114,3 +117,5 @@ Out of scope for Week 4: live remediation, production deployment, autonomous mod
 # Source alignment
 
 IBM SkillsBuild AI Experiential Learning Lab, Solution Design Guide for Participants, slides 17–19 (AI Agent Architecture, AI Agent Workflow, Tools & Integrations), plus slide 22 (MVP scope). Professor Liang Li, Architecture of Intelligence, Part VII (Autonomous Agency), used as conceptual inspiration for agent roles and the plan–execute–evaluate–reflect loop. The project-specific choices in this document are proposed by the team for validation.
+
+Current repository evidence and remaining deliverables are tracked in [Milestones and progress](milestones.md). Historical Word copies in `original/` may reflect earlier designs; the Markdown documentation is maintained for current use.
