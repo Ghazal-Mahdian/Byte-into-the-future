@@ -2,7 +2,7 @@
 
 **Team Byte into the Future** | IBM SkillsBuild AI Experiential Learning Lab | Track #4: Government & Public Services
 
-A multi-agent AI system that helps government IT and cybersecurity teams detect security misconfigurations, understand how affected systems connect to essential public services, prioritize risks by citizen impact, and hand unresolved work to human responders with a complete, evidence-based case packet.
+A proposed multi-agent AI system designed to help government IT and cybersecurity teams detect security misconfigurations, understand how affected systems connect to essential public services, prioritize risks by citizen impact, and hand unresolved work to human responders with a complete, evidence-based case packet.
 
 > **Design principle:** the AI handles permitted, low-risk analysis and documentation. Humans keep authority over critical actions, incident classification, recovery approval, and closure.
 
@@ -17,7 +17,7 @@ Government security teams face alert overload, fragmented tools, hidden misconfi
 **Primary users:** government SOC analysts, IT operations staff, incident responders, and security managers.
 **Example setting:** a simulated county government running public-facing applications, internal identity services, and emergency-related systems.
 
-## Agent architecture
+## Proposed agent architecture
 
 | Agent / module | Responsibility | Key decision |
 |---|---|---|
@@ -56,12 +56,14 @@ Verification / Feedback Deterministic tests; results and analyst corrections rec
 
 ## Technologies
 
+These are proposed tools, not a verified inventory of implemented integrations. IBM Bob use still needs supporting evidence.
+
 | Tool | Purpose |
 |---|---|
 | IBM Bob | Required IBM development workflow |
-| IBM watsonx Orchestrate | Agent workflow orchestration |
+| IBM watsonx Orchestrate (optional) | Potential workflow orchestration; access and adoption to be confirmed |
 | IBM watsonx.ai / Granite (candidate) | Language reasoning, summarization, planning support |
-| IBM Cloud | Hosting and IBM service access |
+| IBM Cloud (candidate) | Hosting and IBM service access; availability to be confirmed |
 | Python | Baseline comparisons, simulated actions, validation, scoring |
 | Synthetic JSON / CSV | Alerts, configurations, assets, service dependencies |
 | SQLite | Case status, event logs, audit trail |
@@ -80,15 +82,17 @@ Detect a misconfigured government cloud-storage resource in synthetic data, iden
 
 ## Development status
 
-| Area | Status |
+| Area | Repository evidence / remaining work |
 |---|---|
-| Project concept and agent design | ✅ Complete (see `docs/`) |
-| AI agents built in VS Code | ✅ Complete (Ghazal) — code being added to `src/` |
-| Dashboard interface | ✅ Complete (Ghazal) |
-| Agents connected to dashboard | ✅ Complete (Ghazal) |
-| Initial system test without dataset | ✅ Complete |
-| Synthetic dataset collection and preparation | 🔄 In progress |
-| Dataset-based testing and validation | ⏳ Not started |
+| Project concept and agent design | Drafts included in `docs/`; team review and validation remain |
+| AI agents, dashboard, and integration | Reported complete by Ghazal; source code not yet uploaded |
+| Initial system test without dataset | Reported complete; test output not yet included |
+| Synthetic dataset | Reported in progress; no sample files uploaded |
+| Dataset-based testing and validation | Test plan included; scripts and results missing |
+| IBM Bob use | Required by the documented project brief; usage evidence missing |
+| Video | No three-minute YouTube video link included |
+
+See [Milestones and progress](docs/milestones.md) for the detailed evidence checklist.
 
 ## Repository structure
 
@@ -102,12 +106,12 @@ Detect a misconfigured government cloud-storage resource in synthetic data, iden
 │   ├── week-4-deliverables.md  Architecture, workflow, tools (guide slides 17–19)
 │   ├── milestones.md           Deliverables and progress tracker
 │   └── original/               Original Word documents
-├── src/                 Agent, orchestration, and dashboard code (Ghazal's VS Code project)
+├── src/                 README only; Ghazal's project upload pending
 ├── data/
-│   ├── samples/         Small synthetic datasets only
-│   ├── results/         Test outputs
+│   ├── samples/         Planned: small synthetic datasets (not yet present)
+│   ├── results/         Planned: test outputs (not yet present)
 │   └── README.md        Data rules and documentation
-└── tests/               Test plan and test scripts
+└── tests/               Test plan only; scripts and results pending
 ```
 
 ## Installation
@@ -133,3 +137,5 @@ _To be completed once the VS Code project is added to `src/`. Ghazal: please fil
 - [Week 4 deliverables: architecture, workflow, tools](docs/week-4-deliverables.md)
 - [Milestones and progress](docs/milestones.md)
 - [Contributing guide](CONTRIBUTING.md)
+
+The Markdown files are the maintained project documentation. Word documents in `docs/original/` are historical source copies and may contain earlier names or designs.
