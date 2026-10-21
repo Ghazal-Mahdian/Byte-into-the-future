@@ -112,16 +112,15 @@ The project can map the response process to NIST Cybersecurity Framework 2.0 fun
 
 # 10. Proposed multi-agent architecture
 
-| Component                    | Function                                                                             |
-|------------------------------|--------------------------------------------------------------------------------------|
-| Intake / Assessment Agent    | Normalizes approved input and identifies potential deviations or alerts.             |
-| Configuration Agent          | Checks security settings against approved baselines and exceptions.                  |
-| Dependency / Impact Agent    | Connects affected assets to government services and technical dependencies.          |
-| Prioritization Agent         | Applies documented criteria and generates explainable recommendations.               |
-| Action / Verification Agent  | Runs allowlisted activities, validates outcomes, and logs changes.                   |
-| Handoff / Reporting Agent    | Builds case packet, human instructions, audit trail, and progress summary.           |
-| Policy / Human Boundary Gate | Enforces permissions, confidence limits, escalation triggers, and approvals.         |
-| Dashboard / Case Store       | Displays findings, status, service impact, owners, evidence links and closure state. |
+| Agent / module | Responsibility | Key decision |
+|---|---|---|
+| Orchestrator | Tracks case state, plans tasks, routes work, preserves audit history | What should happen next? |
+| Security Investigator | Validates configuration findings against approved baselines | Is this a confirmed finding? |
+| Risk & Dependency Analyst | Maps affected assets to public services and estimates impact | What needs attention first? |
+| Response Agent | Proposes or executes only explicitly authorized sandbox actions | Is this action permitted and safe? |
+| Verification & Handoff | Independently checks results and prepares the analyst handoff | Resolved, retry safely, or escalate? |
+
+Policy and human-approval gates apply across all five modules. The dashboard and case store support the workflow; they are not additional agents. Intake and configuration assessment belong to the Security Investigator; dependency analysis and prioritization belong to the Risk & Dependency Analyst. Verification & Handoff independently checks the Response Agent's results.
 
 IBM archetype alignment: Cognitive Load Reducer (analysis and prioritization); Decision Gatekeeper (whether an action may proceed); Invisible Coordinator (multi-step coordination); Human–AI Boundary Manager (when to stop or escalate). These are proposed selections from the IBM guide.
 
@@ -162,9 +161,9 @@ A county cloud storage container is unexpectedly publicly readable. The AI reads
 | Responsibility                                             | Suggested owner                 | Decision needed                           |
 |------------------------------------------------------------|---------------------------------|-------------------------------------------|
 | Project coordination, cybersecurity criteria, user problem | Nyasha                          | Confirm scope and deliverables.           |
-| Cloud / development environment, prototype integration     | Gazelle (proposed)              | Confirm interest, experience, and access. |
+| Cloud / development environment, prototype integration     | Ghazal              | Development owner; confirm service access. |
 | AI logic, dataset preparation, testing                     | Shared initially                | Divide concrete work items.               |
-| QA, documentation, presentation support                    | Potential third member / shared | Reassign after membership is confirmed.   |
+| QA, documentation, presentation support                    | Nyasha / shared | Assign specific QA and presentation tasks.   |
 
 # 15. Validation metrics and acceptance criteria
 
@@ -207,3 +206,5 @@ If validated, the design could reduce repetitive triage work, reveal misconfigur
 # 18. Source and design-status notes
 
 Source basis: IBM SkillsBuild, “US Fall 2026 - Industry Challenges AI Experiential Learning Lab with Bob,” pp. 3, 5–8 (provided by the user). The challenge statement, Bob requirement, data restrictions, deliverables, and archetype descriptions derive from that guide. The dashboard architecture, empathy-map hypotheses, OSI dependency application, AI-to-human continuity workflow, role proposals, metrics, and example scenarios are team design proposals developed in this discussion. NIST references are conceptual alignment rather than a verified quotation of an agency-specific incident-response playbook.
+
+Current implementation evidence is tracked in [Milestones and progress](milestones.md). This document describes the proposed design; reported prototype completion is not yet supported by uploaded source code. Historical Word copies in `original/` are retained as source records; use the maintained Markdown documents for current names, architecture, and status.
