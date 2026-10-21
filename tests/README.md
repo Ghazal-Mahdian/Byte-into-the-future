@@ -18,3 +18,7 @@ Save each run's output in `data/results/` and note it here:
 | Date | Test # | Dataset | Result | Notes |
 |---|---|---|---|---|
 | | | | | |
+
+## Synthetic dataset v1
+
+Use the [12-case dataset and integration guide](../data/samples/README.md). Run `python tests/validate_synthetic_dataset.py` (Python 3.9+, standard library) from the repository root to check references, labels, scores, and authorization expectations. Fixture consistency check passed on October 21, 2026. This is not evidence of a prototype run. Expected outcomes in `fixtures/public-service-risk-v1.expected.json` are evaluator-only; keep them out of agent input. Dataset-based dashboard tests and recorded actual outputs remain outstanding.
