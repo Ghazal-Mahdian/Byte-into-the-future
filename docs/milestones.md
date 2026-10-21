@@ -23,7 +23,7 @@ This checklist compares the files in the repository with the team's documented d
 | MVP scope — slide 22 | [Week 4 §4](week-4-deliverables.md), [concept §12](project-concept.md) | Included — draft | Demonstrate successful authorized sandbox handling and critical-case human escalation |
 | GitHub repository | README, contributing guide, configuration template, ignore rules, documentation | Included | Upload implementation and evidence listed below |
 | Working prototype using IBM Bob | Development reported; [source upload instructions](../src/README.md) only | Reported complete for agents/dashboard — evidence missing | Upload source, dependency manifest, startup instructions, and an end-to-end demonstration; document IBM Bob use |
-| Compliant dataset | [Data rules and empty dataset log](../data/README.md) | Partial; preparation reported in progress | Upload synthetic samples, baselines, asset/service dependencies, schema, generation/source notes, and expected outcomes |
+| Compliant dataset | [12-case synthetic dataset and guide](../data/samples/README.md), baseline, assets/services, mock authorizations, and evaluator-only expected outcomes | Included — v1 development fixture; consistency check passed | Team review of scenario, baseline/scoring/policy; adapt to prototype input and verify assignment requirements |
 | Project documentation | Concept, Week 4 design, README, contributing guide, test plan | Partial | Installation, confirmed integrations, final decisions, test results, and submission-ready slide deck |
 | Three-minute YouTube video | No link included | Missing; previously recorded as not started | Record demonstration, verify duration/accessibility, and add YouTube link |
 
@@ -38,13 +38,13 @@ This checklist compares the files in the repository with the team's documented d
 | VS Code project added to GitHub | Ghazal | Missing; `src/` contains only a README | Upload existing project, excluding credentials |
 | Installation instructions | Ghazal | Missing; root README has a placeholder | Runtime version, dependencies, environment variables, and launch commands |
 | IBM Bob use | Ghazal; Nyasha documents evidence | Missing | Description of actual use and suitable screenshots, logs, or demonstration references |
-| Synthetic dataset | Shared | Missing sample files; preparation reported in progress | Small documented dataset with expected findings |
-| Dataset-based testing | Shared | Plan included; execution evidence missing | Test scripts or reproducible steps plus dated outputs in `data/results/` |
+| Synthetic dataset | Shared | Included — 12 cases, schema documentation, provenance, and expected outcomes | Team review and prototype input adapter |
+| Dataset-based testing | Shared | Fixture consistency validator passed; dashboard execution evidence missing | Run the prototype against cases; save actual outputs and comparisons in `data/results/` |
 | Acceptance-criteria validation | Shared | Criteria drafted; results missing | Detection/false-positive metrics, priority rationale, escalation evidence, handoff completeness, and approval/verification checks |
 | Submission slides | Nyasha / shared | Missing from repository | Completed deck or accessible link mapped to required guide sections |
 | Video | Nyasha / shared | Missing | Three-minute YouTube link |
 
-The planned `data/samples/` and `data/results/` folders do not yet contain committed files. A folder name or README does not establish that implementation, data, or testing is complete.
+`data/samples/` now contains the v1 fixture and guide. No actual dashboard outputs have been committed to `data/results/`. A folder name or README does not establish that implementation, data, or testing is complete.
 
 ## Completion checklist
 
@@ -55,7 +55,8 @@ The planned `data/samples/` and `data/results/` folders do not yet contain commi
 - [ ] Confirm IBM Bob access and document its actual use.
 - [ ] Confirm which watsonx services and IBM Cloud resources are available and adopted.
 - [ ] Choose the public-service scenario, baseline, and prioritization rubric.
-- [ ] Upload documented synthetic data and expected outcomes.
+- [x] Upload documented synthetic data and evaluator-only expected outcomes (v1; consistency check passed).
+- [ ] Review v1 scenario, baseline/scoring/policy and adapt it to the prototype.
 - [ ] Define allowed actions, human-approval conditions, retry limits, escalation triggers, and human closure authority.
 - [ ] Assign remaining security-rule, dataset, QA, slide, and video tasks.
 - [ ] Run dataset-based tests and record results against acceptance criteria.
