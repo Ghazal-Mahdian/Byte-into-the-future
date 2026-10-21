@@ -87,8 +87,8 @@ Detect a misconfigured government cloud-storage resource in synthetic data, iden
 | Project concept and agent design | Drafts included in `docs/`; team review and validation remain |
 | AI agents, dashboard, and integration | Reported complete by Ghazal; source code not yet uploaded |
 | Initial system test without dataset | Reported complete; test output not yet included |
-| Synthetic dataset | Reported in progress; no sample files uploaded |
-| Dataset-based testing and validation | Test plan included; scripts and results missing |
+| Synthetic dataset | [12-case v1 fixture](data/samples/README.md) included; consistency validator passed; team review pending |
+| Dataset-based testing and validation | Test plan, evaluator answers, and fixture validator included; dashboard integration and actual results pending |
 | IBM Bob use | Required by the documented project brief; usage evidence missing |
 | Video | No three-minute YouTube video link included |
 
@@ -108,10 +108,10 @@ See [Milestones and progress](docs/milestones.md) for the detailed evidence chec
 │   └── original/               Original Word documents
 ├── src/                 README only; Ghazal's project upload pending
 ├── data/
-│   ├── samples/         Planned: small synthetic datasets (not yet present)
+│   ├── samples/         12-case synthetic dataset and integration guide
 │   ├── results/         Planned: test outputs (not yet present)
 │   └── README.md        Data rules and documentation
-└── tests/               Test plan only; scripts and results pending
+└── tests/               Test plan, evaluator fixtures, and consistency validator
 ```
 
 ## Installation
