@@ -133,6 +133,8 @@ _To be completed once the VS Code project is added to `src/`. Ghazal: please fil
 
 ## Documentation
 
+- [Consolidated security baselines and agent test catalog](docs/baseline-test-catalog.md)
+
 - [Project concept](docs/project-concept.md)
 - [Week 4 deliverables: architecture, workflow, tools](docs/week-4-deliverables.md)
 - [Milestones and progress](docs/milestones.md)
