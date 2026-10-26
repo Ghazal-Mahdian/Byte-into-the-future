@@ -85,8 +85,8 @@ Detect a misconfigured government cloud-storage resource in synthetic data, iden
 | Area | Repository evidence / remaining work |
 |---|---|
 | Project concept and agent design | Drafts included in `docs/`; team review and validation remain |
-| AI agents, dashboard, and integration | Reported complete by Ghazal; source code not yet uploaded |
-| Initial system test without dataset | Reported complete; test output not yet included |
+| Initial agents and dashboard prototype | Original prototype files are on the [`gazal-initial-code`](https://github.com/nyashachamp/Byte-into-the-future/tree/gazal-initial-code/src/gazal-project) branch, not merged into `main`; integration and team review remain pending |
+| Initial system test without dataset | Reported by the development workstream; reproducible test output and team sign-off are pending |
 | Synthetic dataset | [12-case v1 fixture](data/samples/README.md) included; consistency validator passed; team review pending |
 | Dataset-based testing and validation | Test plan, evaluator answers, and fixture validator included; dashboard integration and actual results pending |
 | IBM Bob use | Required by the documented project brief; usage evidence missing |
@@ -106,7 +106,7 @@ See [Milestones and progress](docs/milestones.md) for the detailed evidence chec
 │   ├── week-4-deliverables.md  Architecture, workflow, tools (guide slides 17–19)
 │   ├── milestones.md           Deliverables and progress tracker
 │   └── original/               Original Word documents
-├── src/                 README only; Ghazal's project upload pending
+├── src/                 Team source area; unmerged prototype on gazal-initial-code branch
 ├── data/
 │   ├── samples/         12-case synthetic dataset and integration guide
 │   ├── results/         Planned: test outputs (not yet present)
@@ -116,7 +116,7 @@ See [Milestones and progress](docs/milestones.md) for the detailed evidence chec
 
 ## Installation
 
-_To be completed once the VS Code project is added to `src/`. Ghazal: please fill in the setup steps, required Python version, how to install dependencies, how to configure `.env`, and how to start the agents and dashboard._
+_The initial prototype is staged on the separate `gazal-initial-code` branch. The team has not verified final installation, dependencies, IBM integration, or end-to-end dataset tests. Those items belong in the proposed refinement branch and must be reviewed before a merge to `main`._
 
 ## Data and safety rules
 
@@ -126,10 +126,7 @@ _To be completed once the VS Code project is added to `src/`. Ghazal: please fil
 
 ## Team
 
-| Member | Role |
-|---|---|
-| Nyasha | Team lead: project coordination, cybersecurity criteria, user problem, documentation |
-| Ghazal | Development: AI agents, orchestration, dashboard, prototype integration |
+**Byte into the Future is a collaborative team project.** The prototype is a work in progress and no individual implementation is described here as the final team product. Contributions are reviewed through Git history, pull requests, and the team milestone checklist. Technical review and approval remain shared responsibilities.
 
 ## Documentation
 
