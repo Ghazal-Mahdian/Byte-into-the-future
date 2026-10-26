@@ -85,7 +85,7 @@ Detect a misconfigured government cloud-storage resource in synthetic data, iden
 | Area | Repository evidence / remaining work |
 |---|---|
 | Project concept and agent design | Drafts included in `docs/`; team review and validation remain |
-| Initial agents and dashboard prototype | Original prototype files are on the [`gazal-initial-code`](https://github.com/nyashachamp/Byte-into-the-future/tree/gazal-initial-code/src/gazal-project) branch, not merged into `main`; integration and team review remain pending |
+| Initial agents and dashboard prototype | Original prototype files are on the [`ghazal-initial-code`](https://github.com/nyashachamp/Byte-into-the-future/tree/ghazal-initial-code/src/ghazal-project) branch, not merged into `main`; integration and team review remain pending |
 | Initial system test without dataset | Reported by the development workstream; reproducible test output and team sign-off are pending |
 | Synthetic dataset | [12-case v1 fixture](data/samples/README.md) included; consistency validator passed; team review pending |
 | Dataset-based testing and validation | Test plan, evaluator answers, and fixture validator included; dashboard integration and actual results pending |
@@ -106,7 +106,7 @@ See [Milestones and progress](docs/milestones.md) for the detailed evidence chec
 │   ├── week-4-deliverables.md  Architecture, workflow, tools (guide slides 17–19)
 │   ├── milestones.md           Deliverables and progress tracker
 │   └── original/               Original Word documents
-├── src/                 Team source area; unmerged prototype on gazal-initial-code branch
+├── src/                 Team source area; unmerged prototype on ghazal-initial-code branch
 ├── data/
 │   ├── samples/         12-case synthetic dataset and integration guide
 │   ├── results/         Planned: test outputs (not yet present)
@@ -116,7 +116,7 @@ See [Milestones and progress](docs/milestones.md) for the detailed evidence chec
 
 ## Installation
 
-_The initial prototype is staged on the separate `gazal-initial-code` branch. The team has not verified final installation, dependencies, IBM integration, or end-to-end dataset tests. Those items belong in the proposed refinement branch and must be reviewed before a merge to `main`._
+_The initial prototype is staged on the separate `ghazal-initial-code` branch. The team has not verified final installation, dependencies, IBM integration, or end-to-end dataset tests. Those items belong in the proposed refinement branch and must be reviewed before a merge to `main`._
 
 ## Data and safety rules
 
