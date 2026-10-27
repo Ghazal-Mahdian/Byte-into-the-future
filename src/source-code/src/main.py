@@ -6,12 +6,13 @@ import json
 from .pipeline import analyze
 
 
-ROOT = Path(__file__).resolve().parents[1]
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+DATASET = REPOSITORY_ROOT / "data" / "samples" / "public-service-risk-v1.json"
 
 
 def main() -> None:
-    findings = analyze(ROOT / "data")
-    print(json.dumps([finding.to_dict() for finding in findings], indent=2))
+    results = analyze(DATASET)
+    print(json.dumps([result.to_dict() for result in results], indent=2))
 
 
 if __name__ == "__main__":
