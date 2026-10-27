@@ -23,11 +23,11 @@ python -m venv .venv
 
 pip install -r requirements.txt
 python -m pytest
-python -m src.main
+PYTHONPATH=. python -m src.main
 python -m streamlit run src/dashboard.py
 ```
 
-The first command prints the generated findings and handoff decisions. The Streamlit command opens the visual dashboard in your browser.
+The command-line workflow reads the repository dataset at `data/samples/public-service-risk-v1.json`. The Streamlit command opens the visual dashboard in your browser. Ubuntu-specific commands are in `docs/ubuntu-testing.md`.
 
 ## Project structure
 
