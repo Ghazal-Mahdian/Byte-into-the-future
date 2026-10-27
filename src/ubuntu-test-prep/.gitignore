@@ -1,0 +1,56 @@
+# ===== Secrets and credentials (NEVER commit) =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+*apikey*
+*api_key*
+*-secret*
+*secrets*
+ibm-credentials*
+ibmcloud*.json
+service-account*.json
+.netrc
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ===== Node / dashboard =====
+node_modules/
+dist/
+build/
+.next/
+npm-debug.log*
+
+# ===== Databases and logs =====
+*.sqlite
+*.sqlite3
+*.db
+*.log
+logs/
+
+# ===== Large or raw data (keep only small samples in data/samples) =====
+data/raw/
+data/large/
+*.zip
+*.tar.gz
+*.parquet
+
+# ===== Editors and OS =====
+.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
