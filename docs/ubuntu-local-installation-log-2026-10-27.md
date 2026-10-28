@@ -229,3 +229,12 @@ After the first-time Streamlit email prompt was left blank, the terminal display
 ## Screenshot evidence manifest
 
 A numbered index of 20 testing screenshots has been created at [`docs/testing-evidence/README.md`](../testing-evidence/README.md). The original PNG files are prepared in a separately downloadable ZIP but **are not yet uploaded to GitHub**. The image evidence links are pending upload. This distinction is intentional: the narrative outcomes above are documented, but image preservation within the repository remains incomplete.
+
+
+### October 28, 2026 — C01 baseline cross-check: PASS (local synthetic assessment)
+
+**Tester:** Nyasha Champ. **Evidence:** Ubuntu terminal screenshot of read-only Python extraction of the original C01 fixture.
+
+**Dataset C01:** `AST-PERMIT`, `BASE-STORAGE-V1`; original `snapshot` values: `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=true`. These each match the baseline requirements displayed in the Streamlit UI. `exception_ids=[]`, `authorization.sandbox_only=true`, `authorization.allowed_actions=[]`, and simulated `tool_behavior=not_called`.
+
+**Result:** **PASS — C01 local baseline classification and no-action workflow**. Dashboard displayed compliant/score 0/severity none, outcome no_action, zero action attempts, with human review required prior to closure. Expected non-remediation behavior aligns with fixture controls. **Limit:** No human final closure, production exposure assessment, or IBM Cloud agent execution tested. Subsequent cases remain untested.
