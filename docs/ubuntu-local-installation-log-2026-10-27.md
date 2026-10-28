@@ -252,3 +252,16 @@ A numbered index of 20 testing screenshots has been created at [`docs/testing-ev
 **Tester:** Nyasha Champ. Screenshot shows exception `EX-PUBLIC` from original JSON: `asset_id=AST-PUBLIC`, `rule_id=CFG-PUBLIC`, `approved_value=true`, `expires_at=2026-12-31T23:59:59Z`, reason `Fictional approved publication of non-sensitive public information`. C02 observed on `2026-10-20T12:00:00Z`, before expiration. Observed `public_read=true`, encryption and logging true; dashboard presented `No baseline deviation`, `no_action`, 0 attempts, and human closure review.
 
 **Result:** PASS for C02 **synthetic exception matching and no-remediation decision**. The dataset provides an exception record but not an identifiable human approver or auditable approval history; production governance review remains necessary. Does not constitute live system security validation. No application code modified.
+
+
+### October 28, 2026 — C03 authorized logging remediation: PASS (local synthetic workflow)
+
+**Tester:** Nyasha Champ. Evidence: Firefox screenshots of C03 dashboard and ordered events, plus Ubuntu Terminal screenshot of original fixture.
+
+- **Fixture:** `C03`, `AST-PERMIT`, `BASE-STORAGE-V1`; snapshot `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=false`; no exceptions.
+- **Authorization:** `sandbox_only=true`; `allowed_actions=["enable_audit_logging"]`; expires `2026-10-21T00:00:00Z`, after simulated observation `2026-10-20T12:00:00Z`.
+- **Simulated behavior:** `tool_behavior=success`, maximum 2 attempts.
+- **Dashboard:** confirmed misconfiguration `CFG-LOGGING`, severity MEDIUM, score 30; action `enable_audit_logging`, attempts 1, tool result success, verification passed, outcome `verified_awaiting_human_closure`.
+- **Event sequence:** action_attempt → tool_result (success) → independent verification (passed). Human review and approval of final closure still required.
+
+**Result: PASS** for the locally simulated authorized-remediation and verification path, not proof of production infrastructure changes or live IBM service integration. No source modifications.
