@@ -224,3 +224,8 @@ After the first-time Streamlit email prompt was left blank, the terminal display
 **Visible values:** case_id `C01`; title `Compliant private storage`; asset_id `AST-PERMIT`; asset_name `object_storage`; service `Fictional county permit portal`; assessment `compliant`; finding `No baseline deviation`; severity `none`; score `0`; confidence `1`; `finding_rule_ids=[]`; `evidence=[]`. Baseline evidence requires public_read false, encryption_enabled true, audit_logging_enabled true. Downstream output: action_attempts 0, action_result `not_run`, verification_result `not_run`, outcome `no_action`, escalation_required false, handoff_required false, human evidence review and approval before final closure, events empty, lifecycle_status `awaiting_human_review`.
 
 **Assessment:** No action on the compliant case and pending human closure review are consistent with expected safeguards. **C01 not yet marked PASS:** the JSON screenshots do not show the fixture's actual observed control values; compare those to the baseline before completing acceptance. No code changes or live remediation performed.
+
+
+## Screenshot evidence manifest
+
+A numbered index of 20 testing screenshots has been created at [`docs/testing-evidence/README.md`](../testing-evidence/README.md). The original PNG files are prepared in a separately downloadable ZIP but **are not yet uploaded to GitHub**. The image evidence links are pending upload. This distinction is intentional: the narrative outcomes above are documented, but image preservation within the repository remains incomplete.
