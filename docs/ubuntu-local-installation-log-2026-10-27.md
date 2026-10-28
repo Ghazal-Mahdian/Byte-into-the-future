@@ -206,3 +206,12 @@ After the first-time Streamlit email prompt was left blank, the terminal display
 **Initially displayed case C01:** “Compliant private storage”; assessment **Compliant**, priority score **0**, severity **NONE**, verification **Not Run**. Asset **AST-PERMIT** (object_storage); affected service **Fictional county permit portal**; finding **No baseline deviation**; action **none**. Sections for evidence/baseline and action/human intervention are visible.
 
 **Assessment:** Initial UI rendering and first-case display verified. Interactive selection, verification, workflow safeguards and other 11 cases have not yet been tested. No source code changed.
+
+
+### October 28, 2026 — Step 4A: C01 preliminary workflow inspection (in progress)
+
+**Tester:** Nyasha Champ, Ubuntu VirtualBox Firefox at `http://localhost:8501`.
+
+**Screenshot observations, lower part of case C01:** Baseline requirements shown: `public_read=False`, `encryption_enabled=True`, `audit_logging_enabled=True`. Workflow shows `tool result: not_run`, `workflow outcome: no_action`, `handoff required: No`, a human review of evidence and approval of final case closure, and an empty ordered execution events table. Collapsible completed AI work and full-result JSON controls are visible.
+
+**Status:** Preliminary UI inspection only. Actual observed configuration values have not yet been compared with the baseline in this session; C01 acceptance remains **pending**. No verification/action controls were invoked and no code was changed.
