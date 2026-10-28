@@ -173,3 +173,14 @@ PYTHONPATH=. python -m pytest -q
 **Assessment:** All four discovered tests in the existing application pytest suite passed in the local VM. An initial malformed pasted `cd` command produced `cd: command not found`, but the directory change was corrected before pytest ran. No production code or dataset edits were made. These passing unit tests do not establish Streamlit UI functionality, scenario-by-scenario outcomes, IBM Cloud integration, or end-to-end acceptance.
 
 **Next pending check:** Application CLI execution followed by Streamlit dashboard launch and scenario assessment, one verified step at a time.
+
+
+### October 28, 2026 — Step 2B: Local CLI pipeline execution
+
+**Tester:** Nyasha Champ, independently in Ubuntu 24.04 VirtualBox VM.
+
+**Command:** `PYTHONPATH=. python -m src.main` from `src/source-code/` with `.venv` active.
+
+**Observed:** Terminal displayed a structured JSON output, then returned to the shell prompt without a visible traceback. The visible end of the JSON includes `handoff_required: true`, `lifecycle_status: "awaiting_human_approval"`, empty `events`, human intervention to approve/reject correction and review evidence before closure, and completed AI work describing a loaded isolated synthetic case, non-coercing validation, approved-baseline comparison, and mapping to a simulated public service.
+
+**Assessment:** The CLI pipeline executed and produced output with a human-approval guardrail for the displayed case. Screenshot captures the final output portion only; it does not verify all 12 scenario outputs, a zero exit status explicitly, dashboard UI behavior, or live IBM integration. Streamlit launch and scenario-by-scenario tests remain pending.
