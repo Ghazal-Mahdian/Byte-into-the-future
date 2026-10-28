@@ -1,7 +1,7 @@
 # Ubuntu VM testing screenshot evidence — October 27–28, 2026
 
 **Tester:** Nyasha Champ (independent testing).  
-**Status:** Image files prepared and named; **awaiting upload to this folder**. The links below will work after upload.  
+**Status:** 35 image files prepared and named in a consolidated ZIP; **awaiting PNG upload to this folder**. The links below will work after upload.  
 **Source:** Terminal and Firefox screenshots supplied during testing. No application code or dataset modified.
 
 | # | Evidence file |
@@ -36,3 +36,25 @@
 - C01 screenshot findings remain provisional until the original observed asset values are cross-checked. No claim of end-to-end IBM-hosted agent integration or acceptance of all 12 cases.
 
 **Upload guidance:** Extract the evidence ZIP and upload the 20 PNG files from its `docs/testing-evidence/` directory here. Keep these exact filenames and avoid duplicate uploads. Do not upload credentials or personal information.
+
+## Additional screenshots — C01 through C05
+
+| # | Evidence file |
+|---|---|
+| 21 | `21-c01-original-fixture.png` |
+| 22 | `22-c02-dashboard.png` |
+| 23 | `23-c02-original-fixture.png` |
+| 24 | `24-c02-approved-exception.png` |
+| 25 | `25-c03-dashboard-summary.png` |
+| 26 | `26-c03-execution-events.png` |
+| 27 | `27-c03-human-intervention.png` |
+| 28 | `28-c03-authorization-fixture.png` |
+| 29 | `29-c04-dashboard.png` |
+| 30 | `30-c04-execution-events.png` |
+| 31 | `31-c04-authorization-fixture.png` |
+| 32 | `32-c05-dashboard.png` |
+| 33 | `33-c05-handoff-and-baseline.png` |
+| 34 | `34-c05-execution-events.png` |
+| 35 | `35-c05-authorization-fixture.png` |
+
+**Transfer status:** The ZIP with 35 PNG screenshots is prepared outside GitHub. Images are not yet committed to this branch. The GitHub connector can update this text manifest but has no local-binary file upload action. C01–C05 local synthetic scenario outcomes are documented separately in the installation/testing log.
