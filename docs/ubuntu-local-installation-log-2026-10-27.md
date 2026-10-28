@@ -95,3 +95,26 @@ Expected *targets* (not observed test results yet):
 Capture screenshots or copied text of the dataset validator, application pytest summary, CLI execution, and dashboard launch. **Do not mark those steps as complete until run.** Keep personal credentials, terminal password prompts, tokens, and any private data out of the shared testing evidence.
 
 *This entry records local setup work. It does not change the application source, claim end-to-end validation, or represent approval to merge code into `main`.*
+
+
+## October 28, 2026 — Dataset inspection and JSON syntax checkpoint
+
+**Evidence source:** Screenshots of terminal output from the Ubuntu 24.04 VirtualBox VM. These are observed results, not inferred application behavior.
+
+- Restarted the Ubuntu VM, opened the extracted project directory at `~/Downloads/Byte-into-the-future-source-code/`, and successfully reactivated the existing `.venv` environment (terminal prompt showed `(.venv)`). No packages were reinstalled.
+- `ls -la` confirmed the project folders `data/`, `docs/`, `src/`, `tests/`, and `.venv/`.
+- `ls -lah data/` confirmed `README.md` and `samples/`.
+- `ls -lah data/samples/` confirmed `public-service-risk-v1.json` (approximately 12 KB) and a sample `README.md`.
+- Executed the read-only syntax check:
+
+  ```bash
+  python -m json.tool data/samples/public-service-risk-v1.json > /dev/null && echo "JSON validation PASSED"
+  ```
+
+  **Observed terminal result:** `JSON validation PASSED`.
+
+**Interpretation:** The dataset file exists and is syntactically valid JSON. This check **does not** establish that it contains 12 cases, that required fields and values are correct, or that the application processes the dataset successfully.
+
+**Next pending action (Step 1E):** Inspect JSON top-level structure, then confirm the case count and dataset-specific constraints. The repository's `python tests/validate_synthetic_dataset.py` validator and application tests have **not yet** been run in this VM. Streamlit and cybersecurity scenario testing also remain pending.
+
+**Scope:** Documentation-only update; no application source, dataset, or dependencies changed.
