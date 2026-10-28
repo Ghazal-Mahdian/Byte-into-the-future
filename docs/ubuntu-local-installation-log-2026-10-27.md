@@ -156,3 +156,20 @@ Dashboard integration and end-to-end behavior have NOT been tested.
 ## Testing attribution clarification — October 28, 2026
 
 **Tester:** Nyasha Champ only. The Ubuntu installation verification, dataset inspection, JSON syntax check, 12-case count, and synthetic dataset validator execution documented above were performed independently by Nyasha Champ. Ghazal was unavailable to participate in this testing session. This attribution concerns testing only and does not change authorship or credit for Ghazal's application and dashboard development.
+
+
+### October 28, 2026 — Step 2A: Automated Python tests PASS
+
+**Tester:** Nyasha Champ (independent local Ubuntu VM session; Ghazal not present).
+
+**Working directory:** `~/Downloads/Byte-into-the-future-source-code/src/source-code/`
+
+```bash
+PYTHONPATH=. python -m pytest -q
+```
+
+**Observed terminal output:** `4 passed in 0.06s` (100% test run completion).
+
+**Assessment:** All four discovered tests in the existing application pytest suite passed in the local VM. An initial malformed pasted `cd` command produced `cd: command not found`, but the directory change was corrected before pytest ran. No production code or dataset edits were made. These passing unit tests do not establish Streamlit UI functionality, scenario-by-scenario outcomes, IBM Cloud integration, or end-to-end acceptance.
+
+**Next pending check:** Application CLI execution followed by Streamlit dashboard launch and scenario assessment, one verified step at a time.
