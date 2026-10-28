@@ -265,3 +265,12 @@ A numbered index of 20 testing screenshots has been created at [`docs/testing-ev
 - **Event sequence:** action_attempt → tool_result (success) → independent verification (passed). Human review and approval of final closure still required.
 
 **Result: PASS** for the locally simulated authorized-remediation and verification path, not proof of production infrastructure changes or live IBM service integration. No source modifications.
+
+
+### October 28, 2026 — C04 critical-service logging scenario (preliminary, pending authorization)
+
+**Tester:** Nyasha Champ. Firefox screenshots of C04 dashboard and execution events.
+
+C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional emergency coordination portal: finding `audit_logging_enabled` expected true/observed false; assessment Confirmed, priority 60, severity HIGH, verification Passed. The simulated action `enable_audit_logging` had 1 attempt, reported tool success, and workflow outcome `verified_awaiting_human_closure`; final human closure review required. Ordered events: (1) immediate human notification required before action; (2) action attempt; (3) tool success; (4) independent verification passed. Compared with C03 (same finding, priority 30, MEDIUM), C04 received higher priority for critical-service impact.
+
+**Limitations:** Notification event reports requirement, not evidence of actual human receipt or acknowledgment. Original fixture's `allowed_actions`, timing and simulation settings have not yet been cross-checked. **C04 status: pending final PASS.**
