@@ -2,7 +2,7 @@
 
 **Project:** Byte into the Future — Public Service Risk Dashboard  
 **Workstream:** Local VM installation and independent testing preparation  
-**Recorded by:** Team lead, using observed Ubuntu terminal output  
+**Tested and documented by:** Nyasha Champ (team lead; independent testing in personal Ubuntu VirtualBox VM)  
 **GitHub branch containing application:** `source-code`  
 **Status:** Dependencies successfully installed; dataset validation and application tests have **not yet** been executed in this VM.
 
@@ -151,3 +151,8 @@ Dashboard integration and end-to-end behavior have NOT been tested.
 ```
 
 **Assessment:** Step 1 dataset validation completed successfully in the Ubuntu VM. This verifies the constraints checked by the existing validator, not independent functionality of the app, Streamlit UI, agent orchestration, or IBM Cloud integrations. Next step: run the application's pytest suite and record its actual results.
+
+
+## Testing attribution clarification — October 28, 2026
+
+**Tester:** Nyasha Champ only. The Ubuntu installation verification, dataset inspection, JSON syntax check, 12-case count, and synthetic dataset validator execution documented above were performed independently by Nyasha Champ. Ghazal was unavailable to participate in this testing session. This attribution concerns testing only and does not change authorship or credit for Ghazal's application and dashboard development.
