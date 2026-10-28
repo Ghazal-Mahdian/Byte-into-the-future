@@ -245,3 +245,10 @@ A numbered index of 20 testing screenshots has been created at [`docs/testing-ev
 **Tester:** Nyasha Champ. Screenshot of original fixture C02 (`Approved public information`, `AST-PUBLIC`, `BASE-STORAGE-V1`): observed snapshot `public_read=true`, `encryption_enabled=true`, `audit_logging_enabled=true`; `exception_ids=["EX-PUBLIC"]`; `sandbox_only=true`, `allowed_actions=[]`, simulated tool behavior `not_called`. Case observation timestamp `2026-10-20T12:00:00Z`. Dashboard previously displayed no baseline deviation and `no_action` despite default baseline `public_read=false`.
 
 **Assessment:** Public-read deviation is potentially covered by exception EX-PUBLIC, but the exception's approval, scope and valid time window are not yet checked. **C02 status: pending**, not PASS. Next: inspect exception definition and compare against the synthetic observation timestamp. No code modified.
+
+
+### October 28, 2026 — C02 approved public-information exception: PASS (local synthetic logic)
+
+**Tester:** Nyasha Champ. Screenshot shows exception `EX-PUBLIC` from original JSON: `asset_id=AST-PUBLIC`, `rule_id=CFG-PUBLIC`, `approved_value=true`, `expires_at=2026-12-31T23:59:59Z`, reason `Fictional approved publication of non-sensitive public information`. C02 observed on `2026-10-20T12:00:00Z`, before expiration. Observed `public_read=true`, encryption and logging true; dashboard presented `No baseline deviation`, `no_action`, 0 attempts, and human closure review.
+
+**Result:** PASS for C02 **synthetic exception matching and no-remediation decision**. The dataset provides an exception record but not an identifiable human approver or auditable approval history; production governance review remains necessary. Does not constitute live system security validation. No application code modified.
