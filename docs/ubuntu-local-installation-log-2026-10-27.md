@@ -215,3 +215,12 @@ After the first-time Streamlit email prompt was left blank, the terminal display
 **Screenshot observations, lower part of case C01:** Baseline requirements shown: `public_read=False`, `encryption_enabled=True`, `audit_logging_enabled=True`. Workflow shows `tool result: not_run`, `workflow outcome: no_action`, `handoff required: No`, a human review of evidence and approval of final case closure, and an empty ordered execution events table. Collapsible completed AI work and full-result JSON controls are visible.
 
 **Status:** Preliminary UI inspection only. Actual observed configuration values have not yet been compared with the baseline in this session; C01 acceptance remains **pending**. No verification/action controls were invoked and no code was changed.
+
+
+### October 28, 2026 — C01 expanded JSON examination (provisional)
+
+**Tester:** Nyasha Champ; evidence: three Firefox screenshots of expanded full-result JSON.
+
+**Visible values:** case_id `C01`; title `Compliant private storage`; asset_id `AST-PERMIT`; asset_name `object_storage`; service `Fictional county permit portal`; assessment `compliant`; finding `No baseline deviation`; severity `none`; score `0`; confidence `1`; `finding_rule_ids=[]`; `evidence=[]`. Baseline evidence requires public_read false, encryption_enabled true, audit_logging_enabled true. Downstream output: action_attempts 0, action_result `not_run`, verification_result `not_run`, outcome `no_action`, escalation_required false, handoff_required false, human evidence review and approval before final closure, events empty, lifecycle_status `awaiting_human_review`.
+
+**Assessment:** No action on the compliant case and pending human closure review are consistent with expected safeguards. **C01 not yet marked PASS:** the JSON screenshots do not show the fixture's actual observed control values; compare those to the baseline before completing acceptance. No code changes or live remediation performed.
