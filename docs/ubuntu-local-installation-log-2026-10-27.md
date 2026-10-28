@@ -238,3 +238,10 @@ A numbered index of 20 testing screenshots has been created at [`docs/testing-ev
 **Dataset C01:** `AST-PERMIT`, `BASE-STORAGE-V1`; original `snapshot` values: `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=true`. These each match the baseline requirements displayed in the Streamlit UI. `exception_ids=[]`, `authorization.sandbox_only=true`, `authorization.allowed_actions=[]`, and simulated `tool_behavior=not_called`.
 
 **Result:** **PASS — C01 local baseline classification and no-action workflow**. Dashboard displayed compliant/score 0/severity none, outcome no_action, zero action attempts, with human review required prior to closure. Expected non-remediation behavior aligns with fixture controls. **Limit:** No human final closure, production exposure assessment, or IBM Cloud agent execution tested. Subsequent cases remain untested.
+
+
+### October 28, 2026 — C02 exception review (pending)
+
+**Tester:** Nyasha Champ. Screenshot of original fixture C02 (`Approved public information`, `AST-PUBLIC`, `BASE-STORAGE-V1`): observed snapshot `public_read=true`, `encryption_enabled=true`, `audit_logging_enabled=true`; `exception_ids=["EX-PUBLIC"]`; `sandbox_only=true`, `allowed_actions=[]`, simulated tool behavior `not_called`. Case observation timestamp `2026-10-20T12:00:00Z`. Dashboard previously displayed no baseline deviation and `no_action` despite default baseline `public_read=false`.
+
+**Assessment:** Public-read deviation is potentially covered by exception EX-PUBLIC, but the exception's approval, scope and valid time window are not yet checked. **C02 status: pending**, not PASS. Next: inspect exception definition and compare against the synthetic observation timestamp. No code modified.
