@@ -274,3 +274,10 @@ A numbered index of 20 testing screenshots has been created at [`docs/testing-ev
 C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional emergency coordination portal: finding `audit_logging_enabled` expected true/observed false; assessment Confirmed, priority 60, severity HIGH, verification Passed. The simulated action `enable_audit_logging` had 1 attempt, reported tool success, and workflow outcome `verified_awaiting_human_closure`; final human closure review required. Ordered events: (1) immediate human notification required before action; (2) action attempt; (3) tool success; (4) independent verification passed. Compared with C03 (same finding, priority 30, MEDIUM), C04 received higher priority for critical-service impact.
 
 **Limitations:** Notification event reports requirement, not evidence of actual human receipt or acknowledgment. Original fixture's `allowed_actions`, timing and simulation settings have not yet been cross-checked. **C04 status: pending final PASS.**
+
+
+### October 28, 2026 — C04 fixture authorization cross-check: PASS (local synthetic scenario)
+
+**Tester:** Nyasha Champ. Original C04 fixture screenshot: `AST-EMERGENCY`, baseline `BASE-STORAGE-V1`, observed at `2026-10-20T12:00:00Z`; public_read=false, encryption_enabled=true, audit_logging_enabled=false; exception_ids=[]; sandbox_only=true; allowed_actions=["enable_audit_logging"]; authorization expires `2026-10-21T00:00:00Z`; tool_behavior=success, max_attempts=2.
+
+**Result:** PASS for local synthetic authorized action, priority/notification sequencing and simulated verification, combined with previously observed dashboard events (notification required before action, one attempt, success, independent verification passed, final human closure pending). Does not prove real-world notification delivery, live infrastructure remediation, or external IBM integration. No source changes.
