@@ -118,3 +118,17 @@ Capture screenshots or copied text of the dataset validator, application pytest 
 **Next pending action (Step 1E):** Inspect JSON top-level structure, then confirm the case count and dataset-specific constraints. The repository's `python tests/validate_synthetic_dataset.py` validator and application tests have **not yet** been run in this VM. Streamlit and cybersecurity scenario testing also remain pending.
 
 **Scope:** Documentation-only update; no application source, dataset, or dependencies changed.
+
+
+### October 28, 2026 — JSON structure and case-count verification
+
+**Evidence:** Ubuntu Terminal screenshots from local VirtualBox testing, with active `(.venv)` prompt.
+
+- Loaded `data/samples/public-service-risk-v1.json` using Python's `json.load`.
+- **Observed root type:** `dict`.
+- **Observed top-level keys:** `dataset_id`, `schema_version`, `synthetic`, `created_date`, `simulation_clock`, `provenance`, `services`, `assets`, `baselines`, `exceptions`, `policy`, `cases`.
+- Inspected `d['cases']`: **12 cases found**, collection type **list**; comparison with expected count printed **`12-case count: PASS`**.
+
+**Limits:** Count and basic JSON structure are confirmed, but individual required fields, values, cross-references, and scenario expectations are not yet validated. The repository's dedicated dataset validator has not yet been executed in this VM.
+
+**Next command (pending):** `python tests/validate_synthetic_dataset.py` from the extracted project root with `.venv` active. Record actual output before claiming validator PASS.
