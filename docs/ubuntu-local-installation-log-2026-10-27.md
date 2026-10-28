@@ -195,3 +195,14 @@ PYTHONPATH=. python -m pytest -q
 After the first-time Streamlit email prompt was left blank, the terminal displayed `2026-10-28 02:17:32.274 Uvicorn server started on :::8501`, `You can now view your Streamlit app in your browser`, and `Local URL: http://localhost:8501` (plus network URL `http://10.0.0.201:8501`). No startup traceback was visible in the supplied screenshot.
 
 **Scope:** Confirms a listening local server; Firefox page rendering, dashboard controls, scenario results, and integration remain unverified. **Next:** open `http://localhost:8501` in the Ubuntu browser and inspect the interface. No source files changed.
+
+
+### October 28, 2026 — Step 3C: Streamlit interface rendered in Firefox
+
+**Tester:** Nyasha Champ, independent Ubuntu 24.04 VirtualBox VM session.
+
+**Observed URL:** `http://localhost:8501` in Firefox within the VM. Screenshot shows the **Public Service Risk Dashboard** rendered, with synthetic test mode, in-memory actions and human-closure notice, a case selector and assessment/priority/severity/verification metrics.
+
+**Initially displayed case C01:** “Compliant private storage”; assessment **Compliant**, priority score **0**, severity **NONE**, verification **Not Run**. Asset **AST-PERMIT** (object_storage); affected service **Fictional county permit portal**; finding **No baseline deviation**; action **none**. Sections for evidence/baseline and action/human intervention are visible.
+
+**Assessment:** Initial UI rendering and first-case display verified. Interactive selection, verification, workflow safeguards and other 11 cases have not yet been tested. No source code changed.
