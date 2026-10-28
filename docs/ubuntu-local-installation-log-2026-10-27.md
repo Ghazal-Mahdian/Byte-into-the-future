@@ -132,3 +132,22 @@ Capture screenshots or copied text of the dataset validator, application pytest 
 **Limits:** Count and basic JSON structure are confirmed, but individual required fields, values, cross-references, and scenario expectations are not yet validated. The repository's dedicated dataset validator has not yet been executed in this VM.
 
 **Next command (pending):** `python tests/validate_synthetic_dataset.py` from the extracted project root with `.venv` active. Record actual output before claiming validator PASS.
+
+
+### October 28, 2026 — Dedicated synthetic dataset validator: PASS
+
+**Command executed in active Ubuntu VM environment, from project root:**
+
+```bash
+python tests/validate_synthetic_dataset.py
+```
+
+**Observed terminal output (verbatim):**
+
+```text
+PASS: 12 fixture cases; references, strict input types, baseline labels, scores,
+notification rules, and action authorization expectations are consistent.
+Dashboard integration and end-to-end behavior have NOT been tested.
+```
+
+**Assessment:** Step 1 dataset validation completed successfully in the Ubuntu VM. This verifies the constraints checked by the existing validator, not independent functionality of the app, Streamlit UI, agent orchestration, or IBM Cloud integrations. Next step: run the application's pytest suite and record its actual results.
