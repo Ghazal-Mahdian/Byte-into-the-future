@@ -334,3 +334,15 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 - Dashboard: finding CFG-LOGGING, priority 30, MEDIUM, two attempts; first temporary tool failure, second reported success, then independent verification passed. Outcome `verified_awaiting_human_closure`, with final human closure review still required.
 
 **Result: PASS** for the synthetic bounded-retry-and-recovery path; exactly two attempts match the fixture's maximum. Not a test of live infrastructure or external agent integration. No code modified.
+
+
+### October 29, 2026 — C09 missing required logging field: PASS (local synthetic validation)
+
+**Tester:** Nyasha Champ. Evidence: Streamlit C09 summary and events screenshots, plus terminal output of original C09 JSON fixture.
+
+- C09 `Missing required logging field`, asset `AST-PERMIT`, baseline `BASE-STORAGE-V1`, observation `2026-10-20T12:00:00Z`.
+- Original snapshot has `public_read=false` and `encryption_enabled=true` but **omits** `audit_logging_enabled`.
+- Authorization: `sandbox_only=true`, `allowed_actions=[]`, expires `2026-10-21T00:00:00Z`. Simulated `tool_behavior=not_called`.
+- Dashboard displayed `Invalid Input`, unknown priority and severity, `missing required field: audit_logging_enabled`, no action attempts, tool not run, workflow `request_data`, and no execution events. It requested a corrected snapshot with strict Boolean fields.
+
+**Result: PASS** for synthetic missing-field validation and safe refusal to infer a value or remediate on incomplete input. This does not test live data ingestion. No application source modified.
