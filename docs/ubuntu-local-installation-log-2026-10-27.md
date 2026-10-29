@@ -295,3 +295,16 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 **Tester:** Nyasha Champ. Original C05 fixture screenshot: `AST-AID`, `BASE-STORAGE-V1`, observed `2026-10-20T12:00:00Z`; `public_read=true`, encryption=true, audit_logging=true, no exceptions, sandbox_only=true, `allowed_actions=[]`, authorization expiry `2026-10-21T00:00:00Z`, simulated `tool_behavior=not_called`.
 
 **Result:** PASS for local synthetic policy restriction and handoff: dashboard identified CRITICAL score 100, attempted zero actions, tool not run, workflow `handoff`, incident response human review required and notification-required event shown. No evidence of actual human notification delivery or production remediation; these remain outside test scope.
+
+
+### October 29, 2026 — C06 correction not authorized: PASS (local synthetic authorization gate)
+
+**Tester:** Nyasha Champ. Screenshots of Streamlit C06 workflow and original C06 JSON fixture in Ubuntu VM.
+
+- C06 `Correction not authorized`, asset `AST-PERMIT`, baseline `BASE-STORAGE-V1`, observed `2026-10-20T12:00:00Z`.
+- Snapshot: `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=false`; `exception_ids=[]`.
+- Authorization: `sandbox_only=true`, `allowed_actions=[]`, expires `2026-10-21T00:00:00Z` (after observation).
+- Simulation: `tool_behavior=not_called`, maximum attempts 2.
+- Dashboard evidence: `CFG-LOGGING` expected true/observed false; action `none`, attempts 0, tool result `not_run`, workflow `awaiting_approval`, handoff required yes, approval/rejection requested before correction and human closure review required.
+
+**Result: PASS** for local synthetic no-unauthorized-action gate and human approval handoff. Actual approval execution and production enforcement remain untested. No application code modified.
