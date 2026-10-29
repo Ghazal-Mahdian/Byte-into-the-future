@@ -321,3 +321,16 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 - Dashboard event sequence: one `enable_audit_logging` action attempt, reported tool success, then independent verification **failed**. Outcome `handoff`; human investigation of unchanged state required and no automatic retry recommended.
 
 **Result: PASS** — expected detection of false-positive tool success and safe escalation in the synthetic workflow. The failed verification is an intentionally expected scenario outcome, not a failed acceptance test. No live infrastructure or human notification delivery validated. No source code modified.
+
+
+### October 29, 2026 — C08 transient failure then recovery: PASS (local synthetic scenario)
+
+**Tester:** Nyasha Champ. Evidence: Streamlit C08 summary and execution-event screenshots, plus original JSON fixture screenshot in Ubuntu VM.
+
+- C08 `Transient failure then recovery`, asset `AST-PERMIT`, baseline `BASE-STORAGE-V1`, observed `2026-10-20T12:00:00Z`.
+- Snapshot: `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=false`; no exceptions.
+- Authorization: `sandbox_only=true`, `allowed_actions=["enable_audit_logging"]`, expires `2026-10-21T00:00:00Z`, after observation.
+- Simulation: `tool_behavior=transient_then_success`, `max_attempts=2`.
+- Dashboard: finding CFG-LOGGING, priority 30, MEDIUM, two attempts; first temporary tool failure, second reported success, then independent verification passed. Outcome `verified_awaiting_human_closure`, with final human closure review still required.
+
+**Result: PASS** for the synthetic bounded-retry-and-recovery path; exactly two attempts match the fixture's maximum. Not a test of live infrastructure or external agent integration. No code modified.
