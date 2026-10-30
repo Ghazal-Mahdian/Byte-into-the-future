@@ -1,7 +1,7 @@
 # Ubuntu VM testing screenshot evidence — October 27–28, 2026
 
 **Tester:** Nyasha Champ (independent testing).  
-**Status:** 35 image files prepared and named in a consolidated ZIP; **awaiting PNG upload to this folder**. The filenames below are the upload manifest; they are not yet links to stored images.  
+**Status:** All 35 PNGs listed below were verified present on the `source-code` branch in this folder. These images document setup and C01–C05; C06–C12 image uploads remain outstanding.  
 **Source:** Terminal and Firefox screenshots supplied during testing. No application code or dataset modified.
 
 | # | Evidence file |
@@ -33,9 +33,9 @@
 - Automated pytest suite: **4 passed in 0.06s**.
 - CLI produced JSON, Streamlit started on port 8501, and C01 dashboard UI rendered.
 - C01 was classified compliant, score 0, severity none, no action; final human review still required.
-- C01–C05 passed their local synthetic scenario checks after cross-checking original fixture data; these results do not prove live production integration. No claim of end-to-end IBM-hosted agent integration or acceptance of all 12 cases.
+- C01–C12 passed their local synthetic scenario checks as documented in the [consolidated test report](../cybersecurity-functional-test-report-2026-10-29.md). Screenshots here cover C01–C05 and installation; later scenario screenshots still require uploading. No claim of end-to-end IBM-hosted agent integration.
 
-**Upload guidance:** Extract the consolidated evidence ZIP and upload all 35 PNG files from its `docs/testing-evidence/` directory here. Keep these exact filenames and avoid duplicate uploads. Do not upload credentials or personal information.
+**Evidence handling:** Preserve the existing 35 PNG filenames. Do not upload them again; add new C06–C12 images with distinct filenames after inspecting screenshots for credentials or private data.
 
 ## Additional screenshots — C01 through C05
 
@@ -57,4 +57,4 @@
 | 34 | `34-c05-execution-events.png` |
 | 35 | `35-c05-authorization-fixture.png` |
 
-**Transfer status:** The consolidated ZIP with 35 PNG screenshots is prepared outside GitHub. Images are not yet committed to this branch. The GitHub connector can update this text manifest but has no local-binary file upload action. C01–C05 local synthetic scenario outcomes are documented separately in the installation/testing log.
+**Transfer status:** The 35 listed screenshots are committed in this folder. C06–C12 screenshots are not yet indexed or verified in GitHub. See the consolidated testing report and chronological log for newer written results.
