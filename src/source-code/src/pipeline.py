@@ -68,7 +68,9 @@ def _add_event(events: list[dict[str, Any]], name: str, detail: str) -> None:
 def _severity(score: int | None, assessment: str) -> str:
     if assessment == "invalid_input":
         return "unknown"
-    if score is None or score == 0:
+    if score is None:
+        return "unknown"
+    if score == 0:
         return "none"
     if score >= 80:
         return "critical"
@@ -114,12 +116,34 @@ def analyze(dataset_path: str | Path, case_ids: Iterable[str] | None = None) -> 
             evidence = errors
             human_work.insert(0, "Provide a corrected snapshot with strict boolean fields.")
         else:
-            active_exceptions = {
-                item["rule_id"] for item in dataset["exceptions"]
-                if item["id"] in set(case.get("exception_ids", []))
-                and item["asset_id"] == case["asset_id"]
-                and not _expired(item["expires_at"], clock)
-            }
+            
+            active_exceptions = set()
+
+            for exception in dataset["exceptions"]:
+                if (
+                    exception["id"] not in set(case.get("exception_ids", []))
+                    or exception["asset_id"] != case["asset_id"]
+                    or _expired(exception["expires_at"], clock)
+                ):
+                    continue
+
+                matching_rule = next(
+                    (
+                        rule
+                        for rule in baseline["rules"]
+                        if rule["id"] == exception["rule_id"]
+                    ),
+                    None,
+                )
+
+                if matching_rule is not None:
+                    observed_value = case["snapshot"].get(matching_rule["field"])
+
+                    if observed_value == exception["approved_value"]:
+                        active_exceptions.add(exception["rule_id"])
+                        
+                        
+            
             for rule in baseline["rules"]:
                 if case["snapshot"][rule["field"]] != rule["expected"] and rule["id"] not in active_exceptions:
                     rules.append(rule)
