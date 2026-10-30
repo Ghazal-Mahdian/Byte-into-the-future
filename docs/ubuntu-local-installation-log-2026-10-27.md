@@ -346,3 +346,15 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 - Dashboard displayed `Invalid Input`, unknown priority and severity, `missing required field: audit_logging_enabled`, no action attempts, tool not run, workflow `request_data`, and no execution events. It requested a corrected snapshot with strict Boolean fields.
 
 **Result: PASS** for synthetic missing-field validation and safe refusal to infer a value or remediate on incomplete input. This does not test live data ingestion. No application source modified.
+
+
+### October 29, 2026 — C10 wrong type for public access: PASS (local synthetic validation)
+
+**Tester:** Nyasha Champ. Evidence: Streamlit C10 screenshots and Ubuntu terminal screenshot of original fixture.
+
+- C10 `Wrong type for public access`, `AST-PERMIT`, `BASE-STORAGE-V1`, observed `2026-10-20T12:00:00Z`.
+- Original snapshot: `public_read="false"` (string, **not** JSON Boolean false); `encryption_enabled=true`, `audit_logging_enabled=true`; exceptions empty.
+- Authorization: `sandbox_only=true`, `allowed_actions=[]`, expires `2026-10-21T00:00:00Z`; simulated tool behavior `not_called`.
+- Dashboard: `Invalid Input`, priority Unknown, severity UNKNOWN, verification Not Run; evidence `field must be a JSON boolean: public_read`; no corrective action or execution attempts; outcome `request_data`; requested a corrected snapshot with strict Boolean fields. Ordered execution events empty.
+
+**Result: PASS** for local synthetic strict-type rejection and safe request for corrected data instead of coercion, scoring, or remediation. This does not validate live data ingestion or production controls. No source code modified.
