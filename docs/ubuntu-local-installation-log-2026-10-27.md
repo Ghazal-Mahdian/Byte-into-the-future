@@ -358,3 +358,14 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 - Dashboard: `Invalid Input`, priority Unknown, severity UNKNOWN, verification Not Run; evidence `field must be a JSON boolean: public_read`; no corrective action or execution attempts; outcome `request_data`; requested a corrected snapshot with strict Boolean fields. Ordered execution events empty.
 
 **Result: PASS** for local synthetic strict-type rejection and safe request for corrected data instead of coercion, scoring, or remediation. This does not validate live data ingestion or production controls. No source code modified.
+
+
+### October 29, 2026 — C11 missing service dependency: PASS with display observation
+
+**Tester:** Nyasha Champ. Ubuntu fixture screenshot plus earlier Streamlit UI screenshots; repository cross-check against the asset inventory and evaluator-only expected fixture.
+
+- C11 `Missing service dependency`, asset `AST-UNKNOWN`: observed `public_read=false`, `encryption_enabled=true`, `audit_logging_enabled=false`, no exceptions, sandbox-only, `allowed_actions=[]`, `tool_behavior=not_called`.
+- Verified `AST-UNKNOWN` has `service_ids=[]` in source dataset. Expected-results fixture prescribes `assessment=confirmed`, `finding_rule_ids=[CFG-LOGGING]`, `priority_score=null`, no action, zero attempts, `verification=not_run`, `outcome=handoff`, `handoff_required=true`.
+- Dashboard reports confirmed logging finding, Unknown priority, no attempted correction, and human handoff: **matches expected functional behavior**.
+
+**Result: PASS** for local dependency-missing and handoff behavior. **Display observation for review:** Streamlit renders severity as `NONE` despite a confirmed finding with unknown/null priority. This is semantically ambiguous; recommend evaluating `UNKNOWN`/`UNDETERMINED` label for null risk score. Not yet classified as functional test failure; score and response follow expected fixture. No source modifications.
