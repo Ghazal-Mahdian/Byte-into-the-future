@@ -369,3 +369,19 @@ C04 `Same logging failure on critical service`, asset `AST-EMERGENCY`, fictional
 - Dashboard reports confirmed logging finding, Unknown priority, no attempted correction, and human handoff: **matches expected functional behavior**.
 
 **Result: PASS** for local dependency-missing and handoff behavior. **Display observation for review:** Streamlit renders severity as `NONE` despite a confirmed finding with unknown/null priority. This is semantically ambiguous; recommend evaluating `UNKNOWN`/`UNDETERMINED` label for null risk score. Not yet classified as functional test failure; score and response follow expected fixture. No source modifications.
+
+
+### October 29, 2026 — C12 unencrypted storage: PASS (local synthetic authorization gate)
+
+**Tester:** Nyasha Champ. Evidence: Firefox dashboard screenshots and Ubuntu terminal screenshot of original C12 fixture.
+
+- C12 `Unencrypted storage`, asset `AST-PERMIT`, baseline `BASE-STORAGE-V1`, observed `2026-10-20T12:00:00Z`.
+- Snapshot: `public_read=false`, `encryption_enabled=false`, `audit_logging_enabled=true`; no exceptions.
+- Authorization: `sandbox_only=true`, `allowed_actions=[]`, expires `2026-10-21T00:00:00Z`; simulation `tool_behavior=not_called`.
+- Dashboard: Confirmed misconfiguration `CFG-ENCRYPTION` expected true/observed false; score 50, severity MEDIUM, verification Not Run; zero action attempts; workflow `awaiting_approval`, human handoff required, and approval before any correction and case closure.
+
+**Result: PASS** for local synthetic encryption finding, correct priority and no-unauthorized-action/human-approval workflow. No live storage encryption modified or production approval tested. No source changes.
+
+## Twelve-scenario local testing checkpoint — October 29, 2026
+
+**Independently tested by Nyasha Champ:** C01–C12 each passed its observed synthetic acceptance checks, including fixture comparison and dashboard workflow review. This is a local proof-of-concept checkpoint, **not** end-to-end IBM-hosted agent validation or production-readiness approval. C11 UI displays severity `NONE` with an unknown priority due to an unmapped service dependency; preserve as a usability/semantic review item. Further work: consolidated scenario results report, updated screenshot uploads for C06–C12, production security readiness assessment, VM stability review and IBM integration validation.
