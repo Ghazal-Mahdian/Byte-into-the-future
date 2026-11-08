@@ -110,13 +110,25 @@ PASS: 12 fixture cases; references, strict input types, baseline labels,
 scores, notification rules, and action authorization expectations are consistent.
 ```
 
-The automated test suite passed:
+The original local Python pipeline tests passed:
 
 ```text
 8 passed
 ```
 
-The tests cover the main workflow cases, including C03, C05, C07, compliant cases, invalid input, unknown service impact, and encryption findings.
+The watsonx Orchestrate packaging and tool tests also passed:
+
+```text
+10 passed
+```
+
+The additional tests verified that:
+- The packaged pipeline matches the original pipeline byte-for-byte.
+- The packaged dataset matches the original dataset byte-for-byte.
+- C03, C05, C07, and C11 produce the expected results.
+- The tool can process individual cases and groups of cases.
+- The tool returns the required structured result fields.
+The imported watsonx Orchestrate agent was then tested against all 12 synthetic cases. It returned the expected case IDs, severity values, verification results, and human-intervention requirements.
 
 ### F-01: Security exception validation
 
@@ -147,7 +159,8 @@ The integration uses:
 
 1. A packaged Python tool containing the tested pipeline and dataset.
 2. A native watsonx Orchestrate agent that calls the tool.
-3. The configured watsonx Orchestrate language model.
+3. The configured watsonx Orchestrate language model,
+   `groq/openai/gpt-oss-120b`.
 4. PowerShell automation for repeatable import and synchronization.
 
 The packaged tool and native agent were imported successfully. The agent analyzed all 12 synthetic cases and returned the expected results.
@@ -167,6 +180,10 @@ The Streamlit dashboard has not yet been deployed to IBM Cloud. It remains avail
 - The Streamlit dashboard has not yet been deployed to IBM Cloud.
 - Cloud-hosted dashboard behavior, networking, monitoring, and runtime configuration still require testing.
 - The packaged pipeline and dataset are maintained as synchronized copies, protected by automated byte-level tests.
+- The system does not automatically close cases. Human approval remains
+  required before final closure or any unapproved correction.
+- The current IBM integration validates the risk-analysis agent and tool,
+  but not yet the Streamlit dashboard running in IBM Cloud.
 
 ## 8. Reproducibility commands
 
@@ -184,4 +201,6 @@ PYTHONPATH=. python -m src.main
 python -m streamlit run src/dashboard.py
 ```
 
-This report will be updated after the Streamlit dashboard is deployed to IBM Cloud and its results are compared with the local dashboard and watsonx Orchestrate agent.
+The risk-analysis tool and agent have been integrated and validated in IBM
+watsonx Orchestrate. The Streamlit dashboard has not yet been deployed to IBM
+Cloud and is planned for a later phase.
