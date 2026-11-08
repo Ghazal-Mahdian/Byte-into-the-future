@@ -2,11 +2,21 @@
 
 ## Project overview
 
-This project is a synthetic cybersecurity risk dashboard for identifying configuration problems that could affect public services. My main contribution was preparing the Python application to use the team’s 12-case synthetic dataset, making the workflow reproducible on Ubuntu, and adding tests for the required safety behaviors.
+This project is a synthetic cybersecurity risk dashboard for identifying configuration problems that could affect public services.
 
-The application is currently located in `src/source-code/`.
+My contributions included:
 
-The local version has been tested successfully. The dataset validator passed, and the automated test suite passed with eight tests. IBM Cloud deployment and testing are the next phase.
+- Connecting the application to the team’s 12-case synthetic dataset.
+- Preparing the project for reproducible Ubuntu testing.
+- Correcting security-exception validation.
+- Correcting the display of unknown risk severity.
+- Adding regression and synchronization tests.
+- Packaging the risk-analysis pipeline and dataset as a watsonx Orchestrate tool.
+- Importing and validating the risk-analysis agent in watsonx Orchestrate.
+
+The local Streamlit dashboard and Python pipeline have been tested successfully. The watsonx Orchestrate agent also analyzed all 12 synthetic cases and returned the expected results.
+
+Streamlit deployment to IBM Cloud is planned as a later phase.
 
 ## 1. System architecture
 
@@ -33,15 +43,21 @@ The project includes five agent-role YAML files:
 | Policy Gate | Checks exceptions, authorization, expiration, and permitted actions. |
 | Handoff Agent | Prepares the human-review information and outstanding decisions. |
 
-The current prototype uses deterministic Python orchestration to perform these tasks. The YAML files describe the agent roles and safety boundaries, but the application does not yet use an external language model or IBM watsonx API. I am documenting this distinction so we do not claim an IBM integration before it has been tested.
+The original YAML files define five logical roles: configuration analysis, impact analysis, prioritization, policy enforcement, and human handoff.
 
-The workflow is:
+For IBM watsonx Orchestrate integration, these functions are currently executed through one packaged risk-analysis tool and one native Orchestrate agent. This design preserves the existing deterministic Python logic while allowing watsonx Orchestrate to call the workflow through an agent interface.
 
-```text
-Load case → Validate input → Compare baseline → Check exceptions
-→ Determine service impact → Calculate priority → Apply policy gate
-→ Simulate permitted action → Verify the resulting state → Report or hand off
-```
+The packaged tool is located in:
+
+- `tools/risk_tool_pkg/analyze_risk_cases.py`
+- `tools/risk_tool_pkg/pipeline.py`
+- `tools/risk_tool_pkg/data/public-service-risk-v1.json`
+
+The native agent definition is:
+
+- `agents/risk_analysis_agent.yaml`
+
+The agent calls the tool, receives structured case results, and presents the findings and human-intervention requirements to the user.
 
 ## 3. Code implementation
 
@@ -52,6 +68,10 @@ The application uses:
 - PyYAML for the YAML agent definitions
 - pytest for automated testing
 - JSON for the dataset and expected test fixtures
+- IBM watsonx Orchestrate ADK 2.19.1 for tool and agent import
+- Python `@tool` integration for the packaged risk-analysis tool
+- PowerShell scripts for repeatable tool and agent import
+- SHA-256 and byte-level synchronization checks for packaged files
 
 Important files include:
 
@@ -61,6 +81,13 @@ Important files include:
 - `src/source-code/agents/` — agent-role YAML files
 - `src/source-code/tests/test_pipeline.py` — automated tests
 - `tests/validate_synthetic_dataset.py` — dataset consistency check
+- `tools/risk_tool_pkg/analyze_risk_cases.py` — watsonx Orchestrate tool entry point
+- `tools/risk_tool_pkg/pipeline.py` — synchronized copy of the tested pipeline
+- `tools/risk_tool_pkg/data/public-service-risk-v1.json` — synchronized dataset copy
+- `agents/risk_analysis_agent.yaml` — native watsonx Orchestrate agent
+- `tests/test_sync.py` — verifies that packaged files match the originals
+- `tests/test_wxo_tool.py` — offline tests for the Orchestrate tool wrapper
+- `scripts/import-all.ps1` — synchronizes and imports the tool and agent
 
 No external API is required for the current local workflow.
 
@@ -110,32 +137,36 @@ I changed the classification so:
 
 C11 now displays `UNKNOWN`, while compliant case C01 continues to display `NONE`.
 
-## 6. IBM Cloud integration
 
-This section is pending because the application has not yet been deployed and tested in IBM Cloud.
 
-During the next phase, I will document:
+## 6. IBM watsonx Orchestrate integration and planned IBM Cloud deployment
 
-- The IBM Cloud service used to host the application.
-- The deployment method.
-- The Python runtime and dependency installation process.
-- Required environment variables and secret handling.
-- The dataset path in the cloud environment.
-- The dashboard startup command and access method.
-- Whether the 12 scenarios produce the same results as the local version.
-- Any changes needed for paths, permissions, networking, or dependencies.
+The risk-analysis capability has been integrated with IBM watsonx Orchestrate.
 
-No credentials or secret values should be committed to GitHub.
+The integration uses:
+
+1. A packaged Python tool containing the tested pipeline and dataset.
+2. A native watsonx Orchestrate agent that calls the tool.
+3. The configured watsonx Orchestrate language model.
+4. PowerShell automation for repeatable import and synchronization.
+
+The packaged tool and native agent were imported successfully. The agent analyzed all 12 synthetic cases and returned the expected results.
+
+Important validation cases included:
+
+- C03: authorized correction followed by independent verification.
+- C05: critical public-access risk escalated without automatic remediation.
+- C07: false tool success detected when the configuration remained unchanged.
+- C11: missing service dependency classified as `UNKNOWN`, with human handoff required.
+
+The Streamlit dashboard has not yet been deployed to IBM Cloud. It remains available as a local interface. A later deployment phase will determine the appropriate IBM Cloud hosting service, configure secrets and environment variables, deploy the dashboard, and compare cloud dashboard behavior with the local version.
 
 ## 7. Current limitations
 
-- The dataset and policy are synthetic demonstration fixtures, not production security standards.
-- Simulated actions only modify in-memory state.
-- IBM Cloud and watsonx integration have not yet been verified.
-- The current implementation uses deterministic Python orchestration rather than independently deployed AI agents.
-- Dashboard behavior should be tested again after deployment to IBM Cloud.
-- Future improvements could include persistent execution logs, stronger schema validation, authentication, cloud monitoring, and a formal deployment configuration.
-- Cases are never closed automatically; human review remains required.
+- The watsonx Orchestrate tool and agent have been imported and validated against all 12 synthetic cases.
+- The Streamlit dashboard has not yet been deployed to IBM Cloud.
+- Cloud-hosted dashboard behavior, networking, monitoring, and runtime configuration still require testing.
+- The packaged pipeline and dataset are maintained as synchronized copies, protected by automated byte-level tests.
 
 ## 8. Reproducibility commands
 
@@ -153,4 +184,4 @@ PYTHONPATH=. python -m src.main
 python -m streamlit run src/dashboard.py
 ```
 
-This report will be updated after the independent Ubuntu rerun and IBM Cloud testing.
+This report will be updated after the Streamlit dashboard is deployed to IBM Cloud and its results are compared with the local dashboard and watsonx Orchestrate agent.
