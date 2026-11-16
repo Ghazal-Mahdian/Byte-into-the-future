@@ -1,0 +1,11 @@
+# Runtime dependencies for the deployed Streamlit dashboard.
+#
+# - pipeline.py uses stdlib only (json, pathlib, datetime, dataclasses)
+# - No ibm-watsonx-orchestrate: the dashboard does NOT connect to WXO
+# - PyYAML is not needed at runtime (no YAML parsing in dashboard or pipeline)
+# - pytest is a dev-only dependency; excluded here to keep the image small
+#
+# Pinned to minor version ranges that are known to work with Python 3.12
+# and Streamlit 1.x.  Adjust if the platform requires specific patch versions.
+
+streamlit>=1.40,<2.0

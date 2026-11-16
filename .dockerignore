@@ -1,0 +1,70 @@
+# ── Secrets and credentials ───────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+*apikey*
+*api_key*
+*-secret*
+*secrets*
+ibm-credentials*
+ibmcloud*.json
+
+# ── Python artefacts ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pyc
+
+# ── Virtual environments (never go into the image) ───────────────────────────
+venv/
+.venv/
+.wxo-venv/
+env/
+
+# ── Test infrastructure ───────────────────────────────────────────────────────
+.pytest_cache/
+tests/
+src/source-code/tests/
+
+# ── watsonx Orchestrate / Bob / ADK files ────────────────────────────────────
+agents/
+tools/
+connections/
+toolkits/
+models/
+knowledge-bases/
+scripts/
+.bob/
+.vscode/
+workspace_config.yaml
+
+# ── Documentation and evidence ───────────────────────────────────────────────
+docs/
+*.md
+!README.md
+
+# ── OS / editor noise ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+.git/
+.gitignore
+
+# ── Large data (only data/samples is copied explicitly in the Dockerfile) ─────
+data/raw/
+data/large/
+*.zip
+*.tar.gz
+*.parquet
+
+# ── Node ──────────────────────────────────────────────────────────────────────
+node_modules/
+dist/
+build/
