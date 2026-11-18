@@ -16,7 +16,7 @@ My contributions included:
 
 The local Streamlit dashboard and Python pipeline have been tested successfully. The watsonx Orchestrate agent also analyzed all 12 synthetic cases and returned the expected results.
 
-Streamlit deployment to IBM Cloud is planned as a later phase.
+The Streamlit dashboard has been deployed to Streamlit Community Cloud and verified against all 12 synthetic cases. The watsonx Orchestrate integration was completed in IBM Cloud (region: eu-gb). IBM Cloud Code Engine deployment was not completed because it was unavailable.
 
 ## 1. System architecture
 
@@ -151,9 +151,9 @@ C11 now displays `UNKNOWN`, while compliant case C01 continues to display `NONE`
 
 
 
-## 6. IBM watsonx Orchestrate integration and planned IBM Cloud deployment
+## 6. IBM watsonx Orchestrate integration
 
-The risk-analysis capability has been integrated with IBM watsonx Orchestrate.
+The risk-analysis capability has been integrated with IBM watsonx Orchestrate in IBM Cloud (region: eu-gb, account: Team-WatsonX).
 
 The integration uses:
 
@@ -172,20 +172,64 @@ Important validation cases included:
 - C07: false tool success detected when the configuration remained unchanged.
 - C11: missing service dependency classified as `UNKNOWN`, with human handoff required.
 
-The Streamlit dashboard has not yet been deployed to IBM Cloud. It remains available as a local interface. A later deployment phase will determine the appropriate IBM Cloud hosting service, configure secrets and environment variables, deploy the dashboard, and compare cloud dashboard behavior with the local version.
+The watsonx Orchestrate integration is hosted inside IBM Cloud. The Streamlit dashboard is deployed separately through Streamlit Community Cloud, which is an external platform not part of IBM Cloud. IBM Cloud Code Engine deployment was not completed because it was unavailable during the deployment window.
 
-## 7. Current limitations
+## 7. Streamlit Community Cloud deployment
 
-- The watsonx Orchestrate tool and agent have been imported and validated against all 12 synthetic cases.
-- The Streamlit dashboard has not yet been deployed to IBM Cloud.
-- Cloud-hosted dashboard behavior, networking, monitoring, and runtime configuration still require testing.
+The Streamlit dashboard was deployed to Streamlit Community Cloud and verified successfully.
+
+### Deployment configuration
+
+| Field | Value |
+|---|---|
+| Hosting platform | Streamlit Community Cloud |
+| Public URL | https://byte-into-the-future-f4mqjpapwp3tx3ni6gfdms.streamlit.app/ |
+| GitHub repository | Ghazal-Mahdian/Byte-into-the-future |
+| Branch | ibm-orchestrate-integration |
+| Entry point | `src/source-code/src/dashboard.py` |
+| Dependency file | `src/source-code/src/requirements.txt` |
+| Pinned dependency | `streamlit==1.66.1` |
+
+### Dashboard load verification
+
+The deployed dashboard loaded successfully and displayed the following overview metrics:
+
+| Metric | Value |
+|---|---|
+| Total cases | 12 |
+| Critical | 1 |
+| Handoffs | 5 |
+| Verified fixes | 3 |
+| Invalid input | 2 |
+
+### Cloud case checks
+
+The following four cases were inspected individually in the deployed dashboard and returned the expected results:
+
+| Case | Expected behaviour | Cloud result |
+|---|---|---|
+| C03 | Simulated correction applied; independent verification passed | ✅ Verification passed after simulated correction |
+| C05 | Critical risk score (100); no automatic correction; human handoff | ✅ Critical risk escalated without automatic correction |
+| C07 | Tool reported success but state unchanged; verification failed; handoff | ✅ False tool success detected and handed off |
+| C11 | No service dependency; severity displayed as UNKNOWN; handoff required | ✅ Severity displayed as UNKNOWN |
+
+### Data and infrastructure notes
+
+- The dashboard uses synthetic data only. No real public-service records, citizen data, or production infrastructure were used.
+- All corrections are performed on an in-memory copy of the synthetic case state. No external systems are written to.
+- The dashboard does not connect to watsonx Orchestrate or any IBM Cloud service. It runs the pipeline locally inside the Streamlit Community Cloud container.
+- The dashboard is not hosted inside IBM Cloud. It is served by Streamlit Community Cloud, an external third-party platform.
+
+## 8. Current limitations
+
+- The watsonx Orchestrate tool and agent have been imported and validated against all 12 synthetic cases inside IBM Cloud.
+- The Streamlit dashboard is deployed to Streamlit Community Cloud (external). It is not hosted inside IBM Cloud.
+- IBM Cloud Code Engine deployment was not completed because it was unavailable.
 - The packaged pipeline and dataset are maintained as synchronized copies, protected by automated byte-level tests.
 - The system does not automatically close cases. Human approval remains
   required before final closure or any unapproved correction.
-- The current IBM integration validates the risk-analysis agent and tool,
-  but not yet the Streamlit dashboard running in IBM Cloud.
 
-## 8. Reproducibility commands
+## 9. Reproducibility commands
 
 From the repository root on Ubuntu:
 
@@ -193,14 +237,12 @@ From the repository root on Ubuntu:
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r src/source-code/requirements.txt
+python -m pip install -r src/source-code/src/requirements.txt
 python tests/validate_synthetic_dataset.py
 cd src/source-code
 PYTHONPATH=. python -m pytest -q
 PYTHONPATH=. python -m src.main
-python -m streamlit run src/dashboard.py
+python -m streamlit run src/source-code/src/dashboard.py
 ```
 
-The risk-analysis tool and agent have been integrated and validated in IBM
-watsonx Orchestrate. The Streamlit dashboard has not yet been deployed to IBM
-Cloud and is planned for a later phase.
+The risk-analysis tool and agent have been integrated and validated in IBM watsonx Orchestrate (IBM Cloud, eu-gb). The Streamlit dashboard is deployed to Streamlit Community Cloud at https://byte-into-the-future-f4mqjpapwp3tx3ni6gfdms.streamlit.app/. IBM Cloud Code Engine deployment was not completed because it was unavailable.
